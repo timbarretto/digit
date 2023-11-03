@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a Proof of concept inspired by the [Diploma in Building High Accuracy Model With Core Machine Learning](https://alison.com/course/building-high-accuracy-model-with-core-machine-learning) using
+[Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and [`react-canvas-draw`](https://www.npmjs.com/package/react-canvas-draw).
 
 ## Getting Started
 
