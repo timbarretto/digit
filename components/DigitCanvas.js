@@ -5,8 +5,8 @@ import CanvasDraw from "react-canvas-draw";
 const MODEL_URL = "./model/model.json";
 
 export default function DigitCanvas(props) {
-  let saveableCanvas = useRef();
   const [data, setData] = React.useState("");
+  const [saveableCanvas, setSaveableCanvas] = useState(useRef());
 
   useEffect(() => {
     console.log("useEffect props.makePrediction", props.makePrediction);
@@ -14,6 +14,13 @@ export default function DigitCanvas(props) {
       makePredictionHandler();
     }
   }, [props.makePrediction]);
+
+  useEffect(() => {
+    console.log("useEffect props.clear", props.clear);
+    if (props.clear) {
+      clearHandler();
+    }
+  }, [props.clear]);
 
   useEffect(() => {
     if (data) {
@@ -58,6 +65,13 @@ export default function DigitCanvas(props) {
     return `Digit may be ${val[0]}, I'm ${percentage}% sure.`;
   };
 
+  const clearHandler = async () => {
+    // console.log("makePrediction", data);
+
+    saveableCanvas.clear();
+    props.setClear(!props.clear);
+  };
+
   const makePredictionHandler = async () => {
     // console.log("makePrediction", data);
 
@@ -84,12 +98,10 @@ export default function DigitCanvas(props) {
   return (
     <CanvasDraw
       id="myCanvas"
-      ref={(canvasDraw) => (saveableCanvas = canvasDraw)}
+      ref={(canvasDraw) => setSaveableCanvas(canvasDraw)}
       onChange={handleChange}
       onMouseDown={handleMouseDown}
-      onClick={() => {
-        saveableCanvas.clear();
-      }}
+      onClick={clearHandler}
     />
   );
 }
